@@ -1,0 +1,1 @@
+import Header from "./components/Header";import MissionCard from "./components/MissionCard";import PlanetMap from "./components/PlanetMap";import Garage from "./components/Garage";import "./styles/app.css";export default function App(){return <div className="app" dir="rtl"><div className="container"><Header/><MissionCard/><PlanetMap/><Garage/></div></div>}
