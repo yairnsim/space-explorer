@@ -35,10 +35,26 @@ export default function TreasureBox({
       setConfetti(false);
     }, 4000);
 
+    const newXp =
+        gameData.xp + r.xp;
+
+    const newCoins =
+        gameData.coins + r.coins;
+
+    localStorage.setItem(
+        "xp",
+        String(newXp)
+    );
+
+    localStorage.setItem(
+        "coins",
+        String(newCoins)
+    );
+
     setGameData({
       ...gameData,
-      xp: gameData.xp + r.xp,
-      coins: gameData.coins + r.coins,
+      xp: newXp,
+      coins: newCoins,
       treasureReady: false,
       treasureOpened: true,
     });
