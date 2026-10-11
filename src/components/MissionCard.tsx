@@ -2,6 +2,23 @@ import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import type { GameData } from "../App";
 
+function formatTime(totalSeconds: number) {
+  const minutes = Math.floor(
+    totalSeconds / 60
+  );
+
+  const seconds =
+    totalSeconds % 60;
+
+  return `${String(minutes).padStart(
+    2,
+    "0"
+  )}:${String(seconds).padStart(
+    2,
+    "0"
+  )}`;
+}
+
 type ResultData = {
   isRecord: boolean;
   time: string;
@@ -165,9 +182,13 @@ export default function MissionCard({
       <div>
         🏆 שיא אישי:
         {" "}
-        {localStorage.getItem(
-          "bestTime"
-        ) || "--:--"}
+        {formatTime(
+           Number(
+             localStorage.getItem(
+               "bestTime"
+             ) || 0
+           )
+        )}
       </div>
 
       {[0, 1, 2].map((i) => (
