@@ -109,6 +109,11 @@ export default function MissionCard({
     );
 
     localStorage.setItem(
+      "streak",
+    String(streak)
+    );
+
+    localStorage.setItem(
       "bestTime",
       String(
         isRecord
