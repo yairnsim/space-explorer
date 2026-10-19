@@ -21,14 +21,32 @@ function getNextLevelXp(xp: number) {
 }
 
 export default function Header({ xp, coins, streak }: HeaderProps) {
-  const ship = localStorage.getItem("ship") || "🚀";
+ 
+  const ship = localStorage.getItem("selectedShip") || "explorer";
+  const shipIcon =
+  `/ships_icons/${{
+    explorer: "01_Explorer.png",
+    falcon: "02_Falcon.png",
+    titan: "03_Titan.png",
+    lightning: "04_Lightning.png",
+    orbiter: "05_Orbiter.png",
+    "lunar-x": "06_Lunar_X.png",
+    "mars-runner": "07_Mars_Runner.png",
+    nova: "08_Nova.png",
+    "galaxy-rider": "09_Galaxy_Rider.png",
+    "cosmic-king": "10_Cosmic_King.png",
+  }[ship]}`;
   const level = getLevel(xp);
   const nextLevelXp = getNextLevelXp(xp);
   const progress = Math.min((xp / nextLevelXp) * 100, 100);
 
   return (
     <div className="card">
-      <div className="ship">{ship}</div>
+      <div className="ship">
+        <img
+          src={shipIcon}
+          alt={ship}
+          className="headerShip"/></div>
       <h1>סייר החלל</h1>
       <div>🔥 רצף {streak} ימים</div>
       <div>⭐ Level {level}</div>

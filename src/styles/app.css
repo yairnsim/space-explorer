@@ -74,3 +74,9 @@ button {
     margin: 0 auto 12px;
     border-radius: 12px;
 }
+
+.headerShip {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
