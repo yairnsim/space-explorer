@@ -248,21 +248,18 @@ export default function MissionCard({
         🚀 התחל משימה
       </button>
 
-      <button
-        className="resetBtn"
-        onClick={() => {
-          if (
-            confirm(
-              "למחוק את כל ההתקדמות?"
-            )
-          ) {
-            localStorage.clear();
-            location.reload();
-          }
-        }}
-      >
-        🗑️ איפוס
-      </button>
+        {seconds > 0 && !result && (
+        <button
+    className="pauseBtn"
+    onClick={() =>
+      setRunning(!running)
+    }
+  >
+        {running
+         ? "⏸️ עצור"
+         : "▶️ המשך"}
+       </button>
+)}
 
       {result && (
         <div className="result">

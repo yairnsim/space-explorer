@@ -77,7 +77,7 @@ export default function TreasureBox({
       ) : !gameData.treasureReady ? (
         <div className="result">🔒 התיבה נעולה</div>
       ) : (
-        <button className="startBtn" onClick={openBox}>
+        <button className="treasureBtn" onClick={openBox}>
           🎁 פתח תיבה
         </button>
       )}
