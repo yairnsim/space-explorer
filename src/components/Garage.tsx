@@ -11,7 +11,13 @@ const SHIPS = [
   { id: "cosmic-king",  image: "/ships/10_Cosmic_King.png",  name:  "Cosmic_King",  cost: 25000 },
 ];
 
-export default function Garage() {
+export default function Garage({
+  selectedShip,
+  setSelectedShip,
+}: {
+  selectedShip: string;
+  setSelectedShip: (ship: string) => void;
+}) {
   const coins = Number(localStorage.getItem("coins") || 0);
 
   const ownedShips = JSON.parse(
@@ -25,7 +31,7 @@ export default function Garage() {
     if (ownedShips.includes(ship.id)) {
       localStorage.setItem("selectedShip", ship.id);
       localStorage.setItem("ship", ship.name);
-      location.reload();
+      setSelectedShip(ship.id);
       return;
     }
 
@@ -48,15 +54,17 @@ export default function Garage() {
 
     localStorage.setItem("selectedShip", ship.id);
     localStorage.setItem("ship", ship.name);
+    setSelectedShip(ship.id);
 
     alert(`🎉 רכשת את ${ship.name}`);
 
-    location.reload();
   }
 
   return (
     <div className="card">
       <h3>🚀 מוסך החלליות</h3>
+
+      <div className="garageScroller">
 
       {SHIPS.map((ship) => (
         <div
@@ -70,23 +78,36 @@ export default function Garage() {
             className="shipImage"
           />
 
-          {ownedShips.includes(ship.id) ? (
-            <button
-              onClick={() => buyOrSelect(ship)}
-            >
-              {activeShip === ship.id
-                ? "✅ פעילה"
-                : "בחר"}
-            </button>
-          ) : (
-            <button
-              onClick={() => buyOrSelect(ship)}
-            >
-              🪙 {ship.cost}
-            </button>
+{ownedShips.includes(ship.id) ? (
+  <button
+    className={
+      activeShip === ship.id
+        ? "garageBtn active"
+        : "garageBtn select"
+    }
+    onClick={() => buyOrSelect(ship)}
+  >
+    {activeShip === ship.id
+      ? "✅ פעילה"
+      : "בחר"}
+  </button>
+) : (
+  <button
+    className={
+      coins >= ship.cost
+        ? "garageBtn buy"
+        : "garageBtn locked"
+    }
+    onClick={() => buyOrSelect(ship)}
+  >
+    {coins >= ship.cost
+      ? "🪙 " + ship.cost
+      : "🔒 " + ship.cost}
+  </button>
           )}
         </div>
       ))}
+    </div>
     </div>
   );
 }

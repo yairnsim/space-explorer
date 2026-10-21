@@ -24,6 +24,9 @@ export default function App(){
   treasureReady:localStorage.getItem("treasureReady")==="true",
   treasureOpened:localStorage.getItem("treasureOpened")==="true"
  });
+ const [selectedShip, setSelectedShip] = useState(
+  localStorage.getItem("selectedShip") || "explorer"
+  );
  const [screen, setScreen] = useState("home");
 return (
   <div className="app" dir="rtl">
@@ -32,6 +35,7 @@ return (
         xp={gameData.xp}
         coins={gameData.coins}
         streak={gameData.streak}
+        selectedShip={selectedShip}
       />
 
       {screen === "home" && (
@@ -51,7 +55,10 @@ return (
       )}
 
       {screen === "garage" && (
-        <Garage />
+        <Garage
+          selectedShip={selectedShip}
+          setSelectedShip={setSelectedShip}
+/>
       )}
 
       {screen === "settings" && (

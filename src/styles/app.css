@@ -128,3 +128,61 @@ h4 {
     margin-top: 0;
     font-weight: 700;
 }
+
+.garageScroller {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 30px;
+    scrollbar-width: none;
+}
+
+    .garageScroller::-webkit-scrollbar {
+        display: none;
+    }
+
+.garageItem {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    scroll-snap-align: center;
+}
+
+.garageBtn {
+    width: 220px;
+    padding: 14px;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+
+    .garageBtn:hover {
+        transform: scale(1.02);
+    }
+
+    .garageBtn.active {
+        background: linear-gradient( 135deg, #22c55e, #4ade80 );
+    }
+
+    .garageBtn.select {
+        background: linear-gradient( 135deg, #2563eb, #60a5fa );
+    }
+
+    .garageBtn.buy {
+        background: linear-gradient( 135deg, #f97316, #fb923c );
+    }
+
+    .garageBtn.locked {
+        background: linear-gradient( 135deg, #475569, #64748b );
+    }
+
+

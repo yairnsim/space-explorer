@@ -2,6 +2,7 @@ type HeaderProps = {
   xp: number;
   coins: number;
   streak: number;
+  selectedShip: string;
 };
 
 function getLevel(xp: number) {
@@ -20,9 +21,13 @@ function getNextLevelXp(xp: number) {
   return 2000;
 }
 
-export default function Header({ xp, coins, streak }: HeaderProps) {
+export default function Header({
+  xp,
+  coins,
+  streak,
+  selectedShip,
+}: HeaderProps) {
  
-  const ship = localStorage.getItem("selectedShip") || "explorer";
   const shipIcon =
   `/ships_icons/${{
     explorer: "01_Explorer.png",
@@ -35,7 +40,7 @@ export default function Header({ xp, coins, streak }: HeaderProps) {
     nova: "08_Nova.png",
     "galaxy-rider": "09_Galaxy_Rider.png",
     "cosmic-king": "10_Cosmic_King.png",
-  }[ship]}`;
+  }[selectedShip]}`;
   const level = getLevel(xp);
   const nextLevelXp = getNextLevelXp(xp);
   const progress = Math.min((xp / nextLevelXp) * 100, 100);
@@ -45,7 +50,7 @@ export default function Header({ xp, coins, streak }: HeaderProps) {
       <div className="ship">
         <img
           src={shipIcon}
-          alt={ship}
+          alt={selectedShip}
           className="headerShip"/></div>
       <h1>סייר החלל</h1>
       <div>🔥 רצף {streak} ימים</div>
