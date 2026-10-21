@@ -134,13 +134,27 @@ h4 {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 10px;
-    padding-bottom: 30px;
-    scrollbar-width: none;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
 }
 
     .garageScroller::-webkit-scrollbar {
-        display: none;
+        height: 6px;
     }
+
+    .garageScroller::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .garageScroller::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.3);
+        border-radius: 999px;
+    }
+
+        .garageScroller::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
 
 .garageItem {
     min-width: 100%;
