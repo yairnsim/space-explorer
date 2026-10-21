@@ -24,8 +24,7 @@ export default function Garage({
     localStorage.getItem("ownedShips") || '["explorer"]'
   );
 
-  const activeShip =
-    localStorage.getItem("selectedShip") || "explorer";
+  const activeShip = selectedShip;
 
   function buyOrSelect(ship: (typeof SHIPS)[0]) {
     if (ownedShips.includes(ship.id)) {
