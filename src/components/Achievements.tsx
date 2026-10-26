@@ -1,25 +1,25 @@
 export default function Achievements({
-  missions,
+  streak,
   shipsOwned,
 }: {
-  missions: number;
+  streak: number;
   shipsOwned: number;
 }) {
   const missionAchievements = [
     {
       title: "🚀 משימה ראשונה",
-      unlocked: missions >= 1,
-      progress: `${Math.min(missions, 1)} / 1`,
+      unlocked:   streak >= 1,
+      progress: `${Math.min(  streak, 1)} / 1`,
     },
     {
       title: "🚀 10 משימות",
-      unlocked: missions >= 10,
-      progress: `${Math.min(missions, 10)} / 10`,
+      unlocked:   streak >= 10,
+      progress: `${Math.min(  streak, 10)} / 10`,
     },
     {
       title: "🚀 50 משימות",
-      unlocked: missions >= 50,
-      progress: `${Math.min(missions, 50)} / 50`,
+      unlocked:   streak >= 50,
+      progress: `${Math.min(  streak, 50)} / 50`,
     },
   ];
 

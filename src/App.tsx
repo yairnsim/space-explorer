@@ -64,7 +64,7 @@ return (
 
       {screen === "achievements" && (
 <Achievements
-  missions={gameData.missions}
+  streak={gameData.streak}
   shipsOwned={
     JSON.parse(
       localStorage.getItem("ownedShips") ||
