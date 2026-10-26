@@ -199,4 +199,73 @@ h4 {
         background: linear-gradient( 135deg, #475569, #64748b );
     }
 
+.achievementItem {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: rgba( 255, 255, 255, 0.08 );
+    border-radius: 12px;
+}
+
+.achievementProgress {
+    margin-top: 6px;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.timer {
+    text-align: center;
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.result {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.card h2,
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.achievementScroller {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+    .achievementScroller::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .achievementScroller::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.3);
+        border-radius: 999px;
+    }
+
+.achievementPage {
+    min-width: 100%;
+    scroll-snap-align: center;
+}
+
+.achievementItem {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.achievementProgress {
+    margin-top: 6px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+
+
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Achievements from "./components/Achievements";
 import Header from "./components/Header";
 import MissionCard from "./components/MissionCard";
 import PlanetMap from "./components/PlanetMap";
@@ -61,6 +62,18 @@ return (
 />
       )}
 
+      {screen === "achievements" && (
+<Achievements
+  missions={gameData.missions}
+  shipsOwned={
+    JSON.parse(
+      localStorage.getItem("ownedShips") ||
+      '["explorer"]'
+    ).length
+  }
+/>
+      )}
+
       {screen === "settings" && (
         <div className="card">
           <h2>⚙️ הגדרות</h2>
@@ -120,6 +133,19 @@ return (
   onClick={() => setScreen("garage")}
 >
   🛸 מוסך
+</button>
+
+<button
+  className={
+    screen === "achievements"
+      ? "activeNav"
+      : ""
+  }
+  onClick={() =>
+    setScreen("achievements")
+  }
+>
+  🏆 הישגים
 </button>
 
 <button
