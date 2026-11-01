@@ -69,6 +69,19 @@ return (
     JSON.parse(
       localStorage.getItem("ownedShips") ||
       '["explorer"]'
+    ).filter((id: string) =>
+      [
+        "explorer",
+        "falcon",
+        "titan",
+        "lightning",
+        "orbiter",
+        "lunar-x",
+        "mars-runner",
+        "nova",
+        "galaxy-rider",
+        "cosmic-king",
+      ].includes(id)
     ).length
   }
 />
