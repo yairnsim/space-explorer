@@ -29,6 +29,37 @@ export default function App(){
   localStorage.getItem("selectedShip") || "explorer"
   );
  const [screen, setScreen] = useState("home");
+ const SHIP_COSTS: Record<string, number> = {
+  explorer: 0,
+  falcon: 100,
+  titan: 250,
+  lightning: 500,
+  orbiter: 1000,
+  "lunar-x": 1500,
+  "mars-runner": 2500,
+  nova: 5000,
+  "galaxy-rider": 10000,
+  "cosmic-king": 25000,
+};
+
+const ownedShips = JSON.parse(
+  localStorage.getItem("ownedShips") ||
+    '["explorer"]'
+);
+
+const validOwnedShips = ownedShips.filter(
+  (id: string) =>
+    Object.keys(SHIP_COSTS).includes(id)
+);
+
+const spentOnShips = validOwnedShips.reduce(
+  (sum: number, shipId: string) =>
+    sum + SHIP_COSTS[shipId],
+  0
+);
+
+const lifetimeCoins =
+  gameData.coins + spentOnShips;
 return (
   <div className="app" dir="rtl">
     <div className="container">
@@ -65,25 +96,8 @@ return (
       {screen === "achievements" && (
 <Achievements
   streak={gameData.streak}
-  shipsOwned={
-    JSON.parse(
-      localStorage.getItem("ownedShips") ||
-      '["explorer"]'
-    ).filter((id: string) =>
-      [
-        "explorer",
-        "falcon",
-        "titan",
-        "lightning",
-        "orbiter",
-        "lunar-x",
-        "mars-runner",
-        "nova",
-        "galaxy-rider",
-        "cosmic-king",
-      ].includes(id)
-    ).length
-  }
+  shipsOwned={validOwnedShips.length}
+  lifetimeCoins={lifetimeCoins}
 />
       )}
 

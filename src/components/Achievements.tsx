@@ -1,9 +1,11 @@
 export default function Achievements({
   streak,
   shipsOwned,
+  lifetimeCoins,
 }: {
   streak: number;
   shipsOwned: number;
+  lifetimeCoins: number;
 }) {
   const missionAchievements = [
     {
@@ -40,6 +42,33 @@ export default function Achievements({
       progress: `${Math.min(shipsOwned, 10)} / 10`,
     },
   ];
+
+  const coinAchievements = [
+  {
+    title: "🪙 100 מטבעות",
+    unlocked: lifetimeCoins >= 100,
+    progress: `${Math.min(
+      lifetimeCoins,
+      100
+    )} / 100`,
+  },
+  {
+    title: "🪙 1000 מטבעות",
+    unlocked: lifetimeCoins >= 1000,
+    progress: `${Math.min(
+      lifetimeCoins,
+      1000
+    )} / 1000`,
+  },
+  {
+    title: "🪙 5000 מטבעות",
+    unlocked: lifetimeCoins >= 5000,
+    progress: `${Math.min(
+      lifetimeCoins,
+      5000
+    )} / 5000`,
+  },
+];
 
   return (
     <div className="card">
@@ -86,6 +115,28 @@ export default function Achievements({
             </div>
           ))}
         </div>
+
+        <div className="achievementPage">
+  <h3>🪙 מטבעות</h3>
+
+  {coinAchievements.map((achievement) => (
+    <div
+      key={achievement.title}
+      className="achievementItem"
+    >
+      <div>
+        {achievement.unlocked
+          ? "✅"
+          : "🔒"}{" "}
+        {achievement.title}
+      </div>
+
+      <div className="achievementProgress">
+        {achievement.progress}
+      </div>
+    </div>
+  ))}
+</div>
 
       </div>
     </div>
