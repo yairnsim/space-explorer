@@ -121,7 +121,8 @@ return (
   }
   onClick={() => setScreen("home")}
 >
-  🏠 בית
+  <div>🏠</div>
+  <div>בית</div>
 </button>
 
 <button
@@ -132,7 +133,8 @@ return (
   }
   onClick={() => setScreen("garage")}
 >
-  🛸 מוסך
+  <div>🛸</div>
+  <div>מוסך</div>
 </button>
 
 <button
@@ -145,7 +147,8 @@ return (
     setScreen("achievements")
   }
 >
-  🏆 הישגים
+  <div>🏆</div>
+  <div>הישגים</div>
 </button>
 
 <button
@@ -154,9 +157,12 @@ return (
       ? "activeNav"
       : ""
   }
-  onClick={() => setScreen("settings")}
+  onClick={() =>
+    setScreen("settings")
+  }
 >
-  ⚙️ הגדרות
+  <div>⚙️</div>
+  <div>הגדרות</div>
 </button>
       </div>
     </div>

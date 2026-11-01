@@ -47,6 +47,8 @@ export default function Achievements({
 
       <div className="achievementScroller">
 
+      <div>חלליות בבעלות: {shipsOwned}</div>
+
         <div className="achievementPage">
           <h3>🚀 משימות</h3>
 
