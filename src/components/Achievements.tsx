@@ -47,17 +47,6 @@ export default function Achievements({
 
       <div className="achievementScroller">
 
-      <div>חלליות בבעלות: {shipsOwned}</div>
-
-      <div>
-  {
-    JSON.parse(
-      localStorage.getItem("ownedShips") ||
-      '["explorer"]'
-    ).join(", ")
-  }
-</div>
-
         <div className="achievementPage">
           <h3>🚀 משימות</h3>
 
