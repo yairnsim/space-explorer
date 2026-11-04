@@ -120,10 +120,73 @@ return (
 <div>Yaya 2026</div>
 
 </div>
+          <button
+  className="startBtn"
+  onClick={() => {
+const saveData = { ...localStorage };
+
+    navigator.clipboard.writeText(
+      JSON.stringify(saveData)
+    );
+
+    alert("קוד השמירה הועתק ללוח");
+  }}
+>
+  📤 ייצא שמירה
+</button>
+
+<button
+  className="pauseBtn"
+  onClick={() => {
+    const pin = prompt(
+      "הכנס קוד מפתח"
+    );
+
+    if (pin !== "2026") {
+      alert("קוד שגוי");
+      return;
+    }
+
+    const saveCode = prompt(
+      "הדבק כאן את קוד השמירה"
+    );
+
+    if (!saveCode) return;
+
+    try {
+      const saveData = JSON.parse(saveCode);
+
+      Object.entries(saveData).forEach(
+        ([key, value]) => {
+          localStorage.setItem(
+            key,
+            String(value)
+          );
+        }
+      );
+
+      alert("השמירה שוחזרה בהצלחה");
+
+      location.reload();
+    } catch {
+      alert("קוד שמירה לא תקין");
+    }
+  }}
+>
+  📥 ייבא שמירה
+</button>
 
           <button
             className="settingsBtn"
             onClick={() => {
+                const pin = prompt(
+  "הכנס קוד מפתח"
+);
+
+if (pin !== "2026") {
+  alert("קוד שגוי");
+  return;
+}
               if (
                 confirm(
                   "למחוק את כל ההתקדמות?"
