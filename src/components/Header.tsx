@@ -10,7 +10,13 @@ function getLevel(xp: number) {
   if (xp < 250) return 2;
   if (xp < 500) return 3;
   if (xp < 1000) return 4;
-  return 5;
+  if (xp < 2000) return 5;
+  if (xp < 4000) return 6;
+  if (xp < 8000) return 7;
+  if (xp < 16000) return 8;
+  if (xp < 32000) return 9;
+
+  return 10;
 }
 
 function getNextLevelXp(xp: number) {
@@ -18,8 +24,15 @@ function getNextLevelXp(xp: number) {
   if (xp < 250) return 250;
   if (xp < 500) return 500;
   if (xp < 1000) return 1000;
-  return 2000;
+  if (xp < 2000) return 2000;
+  if (xp < 4000) return 4000;
+  if (xp < 8000) return 8000;
+  if (xp < 16000) return 16000;
+  if (xp < 32000) return 32000;
+
+  return 50000;
 }
+
 
 export default function Header({
   xp,
